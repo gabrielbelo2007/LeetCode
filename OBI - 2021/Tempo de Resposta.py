@@ -1,5 +1,4 @@
-entrada = input()
-numero_registros = int(entrada)
+numero_registros = int(input())
 registros_salvos = []
 
 while numero_registros > 0:
@@ -8,7 +7,7 @@ while numero_registros > 0:
     registros_salvos.append(recebe_registros)
     numero_registros -= 1
     
-print(registros_salvos)
+registros_restantes = [valor for valor in registros_salvos]
 
 saida = []
 amigos_visualizados = []
@@ -32,28 +31,30 @@ for registro in registros_salvos:
         
         # Contar o tempo de resposta
         quantas_respostas = respondeu_amigo / 2
-        while quantas_respostas > 0:  # NAO ESTA PARANDO DE SER EXECUTADO!! (RESOLVER)
-            for checar_tempo in registros_salvos:
-                # Executado enquanto ainda tiver tempo de resposta para esse amigo
-                    
-                    # Quando chega em uma resposta enviada para o amigo
-                    if checar_tempo[0] == "E" and checar_tempo[1] == registro[1]:
-                        quantas_respostas -= 1
+        for checar_tempo in registros_restantes:
+            # Executado enquanto ainda tiver tempo de resposta para esse amigo
+            if quantas_respostas > 0:
+                # Quando chega em uma resposta enviada para o amigo
+                if checar_tempo[0] == "E" and checar_tempo[1] == registro[1]:
+                     quantas_respostas -= 1
                     
                     # Quando tem tempo adicional
-                    elif checar_tempo[0] == "T": 
-                        tempo_resposta += int(checar_tempo[1])\
+                elif checar_tempo[0] == "T": 
+                    tempo_resposta += int(checar_tempo[1])
                     
                     # Quando é apenas um registro
-                    else:
-                        tempo_resposta += 1
+                elif checar_tempo[1] != registro[1]:
+                    tempo_resposta += 1
             else:
                 break
-              
-        saida += registro[1] + " " + str(tempo_resposta)
-         
+        
+        tempo_resposta = 1 if tempo_resposta == 0 else tempo_resposta
+        saida.append(registro[1] + " " + str(tempo_resposta)) 
+        registros_restantes.pop(0)
+        
     else:  # Executado se o amigo não foi respondido
-        saida += registro[1] + "-1"
+        saida.append(registro[1] + " " + "-1")
         amigos_visualizados.append(registro[1])
 
-print(saida)
+for valor in saida:
+    print(valor)
