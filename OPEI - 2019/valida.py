@@ -1,4 +1,4 @@
-N = input()
+N = input().strip()
 
 contador = 2
 multiplo_10 = 0
