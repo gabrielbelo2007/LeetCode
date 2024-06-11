@@ -1,5 +1,4 @@
-teste = [1, 2, 3]
+teste = [0]
+texto = {1}
 
-total = [9, 4]
-if set(total).intersection(teste):
-    print("s")
+print(texto.intersection(teste))
