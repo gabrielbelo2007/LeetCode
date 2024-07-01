@@ -1,4 +1,4 @@
-teste = [0]
-texto = {1}
+lista = [10, 20, 30, 40]
 
-print(texto.intersection(teste))
+teste = min(lista[0] + lista[1], lista[2] + lista[3])
+print(teste)
