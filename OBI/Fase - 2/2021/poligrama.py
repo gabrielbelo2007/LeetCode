@@ -22,13 +22,17 @@ for valor in divisores_total:
     for letra in anagrama_letras:
         nova_palavra = nova_palavra.replace(letra, "")
         
-    if nova_palavra == "":       
-        print(anagrama)
-        break
+    if nova_palavra == "": 
+        anagrama_2 = palavra[int(valor):int(valor)*2]   
+        
+        contador = 0
+        for letra in anagrama_letras:
+            if anagrama_2.count(letra) == anagrama.count(letra):
+                contador += 1
+
+        if contador == len(anagrama_letras):
+            print(anagrama)
+            break
 
 else:
     print("*")
-
-# 4
-# xyyy -> xy 
-# correto = "*"

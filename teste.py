@@ -1,21 +1,26 @@
-#letras_diferentes = 0
-#letras_usadas = ""
-#for letra in palavra:
+palavra = "abc"
+numero = palavra.count("d")
+print(numero)
+
+"""
+for valor in divisores_total:
+    anagrama = palavra[0:int(valor)]
     
-#    if letra not in letras_usadas:
-#        letras_diferentes += 1
-#        letras_usadas += letra
-
-#maior = 0
-#letra_salva = 0
-#for letra in letras_usadas:
-#    contagem = palavra.count(letra)
-#    maior = contagem if contagem > maior else maior
-#   letra_salva = letra if maior == contagem else letra_salva
-
-#print(letras_diferentes, maior, letra_salva)
-
-palavra = "yx"
-
-if "xy" in palavra:
-    print("sim")
+    anagrama_letras = set(anagrama)
+    nova_palavra = palavra
+    for letra in anagrama_letras:
+        nova_palavra = nova_palavra.replace(letra, "")
+        
+        if nova_palavra == "":
+            contador = 0
+            verificar = palavra[int(valor):(int(valor)*2)]
+            for letra in anagrama_letras:
+                if letra in verificar:
+                    contador += 1
+            if contador == len(anagrama_letras): 
+                print(anagrama)
+                break
+            else:
+                print("*")
+                break
+"""
