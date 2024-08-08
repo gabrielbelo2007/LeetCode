@@ -14,25 +14,43 @@ divisores_total = dividir(qnt_letras)
 
 # Separar a palavra em anagramas
 
-for valor in divisores_total:
-    anagrama = palavra[0:int(valor)]
+for divisor in divisores_total:
+    rodar = qnt_letras // int(divisor) - 1
+    checar = rodar
+    certo = 0
     
+    anagrama = palavra[0:int(divisor)]
+        
     anagrama_letras = set(anagrama)
     nova_palavra = palavra
     for letra in anagrama_letras:
         nova_palavra = nova_palavra.replace(letra, "")
-        
+    
+    valor = 0       
     if nova_palavra == "": 
-        anagrama_2 = palavra[int(valor):int(valor)*2]   
-        
-        contador = 0
-        for letra in anagrama_letras:
-            if anagrama_2.count(letra) == anagrama.count(letra):
-                contador += 1
-
-        if contador == len(anagrama_letras):
+        while rodar > 0:
+            valor += 1
+            
+            inicio = int(divisor) * valor
+            final =  int(divisor) * (valor + 1)
+                    
+            anagrama_2 = palavra[inicio:final]   
+                    
+            contador = 0
+            for letra in anagrama_letras:
+                if anagrama_2.count(letra) == anagrama.count(letra):
+                    contador += 1
+                    
+            if contador == len(anagrama_letras):
+                certo += 1
+                rodar -= 1
+                
+            else:
+                rodar = 0
+                break
+                
+        if certo == checar:
             print(anagrama)
             break
-
 else:
     print("*")
