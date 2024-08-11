@@ -1,22 +1,50 @@
-c_senha, letras_escon, palavras = input().split()
-senha = input().split()
+c_senha, letras_escon, qnt_letras = input().split()
+senha = input()
+
 letras_escon = int(letras_escon)
+qnt_letras = int(qnt_letras)
 
-letras_poss = []
-while letras_escon > 0:
-    letras_poss.append(input())
-    letras_escon -= 1
-    
+palavras = []
+for valor in range(letras_escon):
+    palavras.append(input())
+ 
 senha_corr = int(input())
+tentativas = letras_escon * qnt_letras
 
-indice = 0
-while senha_corr > 0:
-    for letra in senha:
-        if letra == "#":
-            letras_escon.insert(indice, letras_poss)  # ALTERAR
-            indice += 1
-            letras_escon.pop(indice)
+letra_c1 = 0
+letra_cN = 0
+contagem_letras = 0
+
+senhas_testadas = []
+while tentativas > 0:
+    senha_verif = ""
+    conjunto = 0
+
+    for caracter in senha:
+        if caracter == "#" and conjunto == 0:
+            if contagem_letras % letras_escon == 0 and contagem_letras != 0:
+                    letra_c1 += 1
+                    letra_cN = 0
+            
+            senha_verif += palavras[conjunto][letra_c1]
+            
+            contagem_letras += 1
+            if conjunto < letras_escon:
+                conjunto += 1
+        
+        elif caracter == "#":
+            senha_verif += palavras[conjunto][letra_cN]
+            
+            if conjunto < letras_escon - 1:
+                conjunto += 1
+            else:
+                letra_cN += 1
+
         else:
-            indice += 1
+            senha_verif += caracter
     
-    senha_corr -= 1
+    tentativas -= 1
+    senhas_testadas.append(senha_verif)
+
+senhas_testadas.sort()
+print(senhas_testadas[senha_corr - 1])
