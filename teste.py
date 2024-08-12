@@ -1,4 +1,8 @@
-lista = ["xb", "xa"]
-lista.sort()
+palavras = []
 
-print(lista)
+ordenar = list(input())
+ordenar.sort()
+ordenar = "".join(ordenar)
+palavras.append(ordenar)
+
+print(palavras)

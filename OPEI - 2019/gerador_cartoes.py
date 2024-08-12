@@ -8,7 +8,6 @@ while validado != "SIM":
     for i in range(8):  
         N += str(random.randint(0,9))  
     
-    
     contador = 2
     multiplo_10 = 0
     for valor in N: 
