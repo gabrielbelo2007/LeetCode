@@ -1,2 +1,5 @@
-# OBI---OPEI
- Activities from OBI and OPEI
+# LeetCode
+### Resolução de desafios para prática de **Programação Competitiva**
+
+
+
